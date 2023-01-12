@@ -38,18 +38,18 @@ public class JpaMain {
 		String id = "id1";
 		Member member = new Member();
 		member.setId(id);
-		member.setUsername("주빈");
+		member.setName("주빈");
 		member.setAge(25);
 		
 		// 등록
 		manager.persist(member);
 		
 		// 수정
-		member.setUsername("윤주빈");
+		member.setName("윤주빈");
 		
 		// 한 건 조회
 		Member findMember = manager.find(Member.class, id);
-		System.out.println("findMember = " + findMember.getUsername() + ", age = " + findMember.getAge());
+		System.out.println("findMember = " + findMember.getName() + ", age = " + findMember.getAge());
 		
 		// 목록 조회
 		List<Member> memberList = manager.createQuery("select m from Member m", Member.class).getResultList();
@@ -57,5 +57,6 @@ public class JpaMain {
 		
 		// 삭제
 		manager.remove(member);
+		
 	}
 }
