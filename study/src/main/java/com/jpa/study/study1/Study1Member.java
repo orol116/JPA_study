@@ -17,14 +17,18 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "MEMBER", uniqueConstraints = {@UniqueConstraint( // 유니크 제약조건을 만들어주는 기능
+@Table(name = "STUDY1_MEMBER", uniqueConstraints = {@UniqueConstraint( // 유니크 제약조건을 만들어주는 기능
 		name = "NAME_AGE_UNIQUE",
 		columnNames = {"NAME", "AGE"}
 )})
-public class Member {
+public class Study1Member {
 	
 	@Id
 	@Column(name = "ID")
+//	@GeneratedValue(strategy = GenerationType.IDENTITY) : 기본 키 값을 얻어오기 위해 DB를 추가로 조회
+//	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "시퀀스명") : 실제 DB의 시퀀스와 매핑
+//	@GeneratedValue(strategy = GenerationType.TABLE, generator = "시퀀스명") : TABLE 전략 (키 생성 전용 테이블을 만들고 DB 시퀀스를 흉내내는 전략)
+//	@GeneratedValue(strategy = GenerationType.AUTO) : DB를 변경해도 코드 수정없이 DB에 맞는 전략을 선택해서 적용 시켜줌
 	private String id;
 	
 	@Column(name = "NAME", nullable = false, length = 10) // 추가
