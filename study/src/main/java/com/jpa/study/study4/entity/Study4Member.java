@@ -15,7 +15,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Member {
+public class Study4Member {
 	
 	@Id @GeneratedValue
 	@Column(name = "MEMBER_ID")
@@ -28,6 +28,6 @@ public class Member {
 	private String zipcode;
 	
 	@OneToMany(mappedBy = "member")
-	private List<Order> orders = new ArrayList<>();
+	private List<Study4Order> orders = new ArrayList<>();
 
 }

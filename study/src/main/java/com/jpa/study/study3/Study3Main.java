@@ -8,7 +8,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 import com.jpa.study.study3.entity.Study3Member;
-import com.jpa.study.study3.entity.Team;
+import com.jpa.study.study3.entity.Study3Team;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -50,7 +50,7 @@ public class Study3Main {
 	public static void testSave(EntityManager manager) {
 		
 		// 팀1 저장
-		Team team1 = new Team("team1", "팀1", null);
+		Study3Team team1 = new Study3Team("team1", "팀1", null);
 		manager.persist(team1); // 저장
 		
 		// 회원1 저장
@@ -111,7 +111,7 @@ public class Study3Main {
 		 */
 		
 		// 새로운 팀2
-		Team team2 = new Team("team2", "팀2", null);
+		Study3Team team2 = new Study3Team("team2", "팀2", null);
 //		manager.persist(team2);
 		
 		// 회원1에 새로운 팀2으로 설정
@@ -128,7 +128,7 @@ public class Study3Main {
 		
 		Study3Member member1 = manager.find(Study3Member.class, "member1");
 		Study3Member member2 = manager.find(Study3Member.class, "member2");
-		Team team1 = new Team("team1", "팀1", null);
+		Study3Team team1 = new Study3Team("team1", "팀1", null);
 		
 		/* 연관된 Entity 삭제
 		 * 
@@ -147,7 +147,7 @@ public class Study3Main {
 	 */
 	public static void biDirection(EntityManager manager) {
 		
-		Team team = manager.find(Team.class, "team1");
+		Study3Team team = manager.find(Study3Team.class, "team1");
 		List<Study3Member> members = team.getMembers(); // (팀 -> 회원)
 														// 객체 그래프 탐색
 		
@@ -164,7 +164,7 @@ public class Study3Main {
 	public static void saveMappedBy(EntityManager manager) {
 		
 		// 팀1 저장
-		Team team1 = new Team("team1", "팀1", null);
+		Study3Team team1 = new Study3Team("team1", "팀1", null);
 		manager.persist(team1);
 		
 		// 회원1 저장
@@ -186,7 +186,7 @@ public class Study3Main {
 	public static void saveNonOwner(EntityManager manager) {
 		
 		// 팀1 저장
-		Team team1 = new Team("team1", "팀1", null);
+		Study3Team team1 = new Study3Team("team1", "팀1", null);
 		manager.persist(team1);
 		
 		// 회원1 저장
@@ -233,7 +233,7 @@ public class Study3Main {
 		 * 연관관계 편의 메서드라고 한다.
 		 */
 		
-		Team team1 = new Team("team1", "팀1", null);
+		Study3Team team1 = new Study3Team("team1", "팀1", null);
 		manager.persist(team1);
 		
 		Study3Member member1 = new Study3Member("member1", "회원1", null);

@@ -11,7 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Team {
+public class Study5Team {
 	
 	@Id @GeneratedValue
 	@Column(name = "TEAM_ID")
@@ -21,9 +21,9 @@ public class Team {
 	
 	@OneToMany
 	@JoinColumn(name = "TEAM_ID") // MEMBER 테이블의 TEAM_ID (FK)
-	private List<Member> members = new ArrayList<>();
+	private List<Study5Member> members = new ArrayList<>();
 	
-	public void addMember(Member member) {
+	public void addMember(Study5Member member) {
 		this.members.add(member);
 		
 		// 무한루프에 빠지지 않도록 체크
@@ -48,11 +48,11 @@ public class Team {
 		this.name = name;
 	}
 
-	public List<Member> getMembers() {
+	public List<Study5Member> getMembers() {
 		return members;
 	}
 
-	public void setMembers(List<Member> members) {
+	public void setMembers(List<Study5Member> members) {
 		this.members = members;
 	}
 }

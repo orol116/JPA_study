@@ -20,7 +20,7 @@
             
             <!-- 애플리케이션 실행 시점에 DB테이블을 자동으로 생성 -->
             <!-- 개발이나 학습 단계에서만 사용하고 운영단계에선 절대 사용 X -->
-            <!--<property name="hibernate.hbm2ddl.auto" value="create" />-->
+            <property name="hibernate.hbm2ddl.auto" value="create" />
             
             <!-- DB 언더스코어 표기 및 자바 카멜표기법 표기 -->
             <!--<property name="hibernate.ejb.naming_strategy" value="org.hibernate.cfg.ImprovedNamingStrategy" />-->

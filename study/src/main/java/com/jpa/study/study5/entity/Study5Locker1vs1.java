@@ -7,8 +7,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import lombok.Data;
+
+@Data
 @Entity
-public class Locker1vs1 {
+public class Study5Locker1vs1 {
 	
 	@Id @GeneratedValue
 	@Column(name = "LOCKER_ID")
@@ -19,6 +22,6 @@ public class Locker1vs1 {
 //	@OneToOne(mappedBy = "locker")
 	@OneToOne
 	@JoinColumn(name = "MEMBER_ID")
-	private Member member;
+	private Study5Member member;
 
 }

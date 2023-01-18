@@ -3,11 +3,14 @@ package com.jpa.study.study5;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 
-import com.jpa.study.study5.entity.MemberNvsN;
-import com.jpa.study.study5.entity.MemberProduct;
-import com.jpa.study.study5.entity.MemberProductId;
-import com.jpa.study.study5.entity.ProductNvsN;
+import com.jpa.study.study5.entity.Study5MemberNvsN;
+import com.jpa.study.study5.entity.Study5MemberProduct;
+import com.jpa.study.study5.entity.Study5MemberProductId;
+import com.jpa.study.study5.entity.Study5ProductNvsN;
 
 public class Study5Main {
 
@@ -25,18 +28,34 @@ public class Study5Main {
 		 * 단순하고 편리하게 ORM 매핑을 할 수 있다.
 		 * 이러한 이유로 식별 관계보다는 비식별 관계를 더 추천한다.
 		 */
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("jpaStudy");
+		EntityManager manager = factory.createEntityManager();
+		EntityTransaction transaction = manager.getTransaction();
+		
+		try {
+			transaction.begin();
+			
+			// business logic
+			
+			transaction.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			transaction.rollback();
+		} finally {
+			manager.close();
+		}
 		
 	}
 	
 	// 저장
 	public static void save(EntityManager manager) {
 		
-		ProductNvsN productA = new ProductNvsN();
+		Study5ProductNvsN productA = new Study5ProductNvsN();
 		productA.setId("productA");
 		productA.setName("상품A");
 		manager.persist(productA);
 		
-		MemberNvsN member1 = new MemberNvsN();
+		Study5MemberNvsN member1 = new Study5MemberNvsN();
 		member1.setId("member1");
 		member1.setUsername("회원1");
 		member1.getProducts().add(productA); // 연관관계 설정
@@ -47,9 +66,9 @@ public class Study5Main {
 	// 탐색
 	public static void find(EntityManager manager) {
 		
-		MemberNvsN member = manager.find(MemberNvsN.class, "member1");
-		List<ProductNvsN> products = member.getProducts(); // 객체 그래프 탐색
-		for (ProductNvsN product : products) {
+		Study5MemberNvsN member = manager.find(Study5MemberNvsN.class, "member1");
+		List<Study5ProductNvsN> products = member.getProducts(); // 객체 그래프 탐색
+		for (Study5ProductNvsN product : products) {
 			System.out.println("product.name = " + product.getName());
 		}
 		
@@ -58,9 +77,9 @@ public class Study5Main {
 	// 역방향 탐색
 	public static void findInverse(EntityManager manager) {
 		
-		ProductNvsN product = manager.find(ProductNvsN.class, "productA");
-		List<MemberNvsN> members = product.getMembers();
-		for (MemberNvsN member : members) {
+		Study5ProductNvsN product = manager.find(Study5ProductNvsN.class, "productA");
+		List<Study5MemberNvsN> members = product.getMembers();
+		for (Study5MemberNvsN member : members) {
 			System.out.println("member = " + member.getUsername());
 		}
 		
@@ -73,19 +92,19 @@ public class Study5Main {
 		// 가져와서 자신의 기본 키 값으로 사용한다.
 		
 		// 회원 저장
-		MemberNvsN member1 = new MemberNvsN();
+		Study5MemberNvsN member1 = new Study5MemberNvsN();
 		member1.setId("member1");
 		member1.setUsername("회원1");
 		manager.persist(member1);
 		
 		// 상품 저장
-		ProductNvsN productA = new ProductNvsN();
+		Study5ProductNvsN productA = new Study5ProductNvsN();
 		productA.setId("productA");
 		productA.setName("상품1");
 		manager.persist(productA);
 		
 		// 회원 상품 저장
-		MemberProduct memberProduct = new MemberProduct();
+		Study5MemberProduct memberProduct = new Study5MemberProduct();
 		memberProduct.setMember(member1);   // 주문 회원 - 연관관계 설정
 		memberProduct.setProduct(productA); // 주문 상품 - 연관관계 설정
 		memberProduct.setOrderAmount(2);    // 주문 수량
@@ -98,14 +117,14 @@ public class Study5Main {
 	public static void findNvsN(EntityManager manager) {
 		
 		// 기본 키 값 생성
-		MemberProductId memberProductId = new MemberProductId();
+		Study5MemberProductId memberProductId = new Study5MemberProductId();
 		memberProductId.setMember("member1");
 		memberProductId.setProduct("productA");
 		
-		MemberProduct memberProduct = manager.find(MemberProduct.class, memberProductId);
+		Study5MemberProduct memberProduct = manager.find(Study5MemberProduct.class, memberProductId);
 		
-		MemberNvsN member = memberProduct.getMember();
-		ProductNvsN product = memberProduct.getProduct();
+		Study5MemberNvsN member = memberProduct.getMember();
+		Study5ProductNvsN product = memberProduct.getProduct();
 		
 		System.out.println("member = " + member.getUsername());
 		System.out.println("product = " + product.getName());

@@ -13,7 +13,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Order {
+public class Study5Order {
 	
 	// 추천하는 기본 키 생성 전략은 DB에서 자동으로 생성해주는
 	// 대리키를 Long 값으로 사용하는 것이다.
@@ -26,11 +26,11 @@ public class Order {
 	
 	@ManyToOne
 	@JoinColumn(name = "MEMBER_ID")
-	private MemberNvsN member;
+	private Study5MemberNvsN member;
 	
 	@ManyToOne
 	@JoinColumn(name = "PRODUCT_ID")
-	private ProductNvsN product;
+	private Study5ProductNvsN product;
 	
 	private int orderAmount;
 

@@ -19,7 +19,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "ORDERS")
-public class Order {
+public class Study2Order {
 
 	@Id
 	@GeneratedValue
@@ -33,5 +33,5 @@ public class Order {
 	private Date orderDate;     // 주문 날짜
 	
 	@Enumerated(EnumType.STRING)
-	private OrderStatus status; // 주문 상태
+	private Study2OrderStatus status; // 주문 상태
 }

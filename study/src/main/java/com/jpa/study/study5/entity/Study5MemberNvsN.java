@@ -17,7 +17,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class MemberNvsN {
+public class Study5MemberNvsN {
 	
 	@Id @Column(name = "MEMBER_ID")
 	private String id;
@@ -27,13 +27,13 @@ public class MemberNvsN {
 	@JoinTable(name = "MEMBER_PRODUCT"
 			 , joinColumns = @JoinColumn(name = "MEMBER_ID")
 			 , inverseJoinColumns = @JoinColumn(name = "PRODUCT_ID"))
-	private List<ProductNvsN> products = new ArrayList<>();
+	private List<Study5ProductNvsN> products = new ArrayList<>();
 	
 	// 역방향 (클래스, N:N을 푸는 연결 엔티티)
 	@OneToMany(mappedBy = "member")
-	private List<MemberProduct> memberProducts;
+	private List<Study5MemberProduct> memberProducts;
 	
 	@OneToMany(mappedBy = "member")
-	private List<Order> orders = new ArrayList<>();
+	private List<Study5Order> orders = new ArrayList<>();
 
 }

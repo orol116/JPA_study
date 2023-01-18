@@ -24,7 +24,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "ORDERS")
-public class Order {
+public class Study4Order {
 
 	@Id @GeneratedValue
 	@Column(name = "ORDER_ID")
@@ -32,19 +32,19 @@ public class Order {
 	
 	@ManyToOne
 	@JoinColumn(name = "MEMBER_ID")
-	private Member member; // 주문회원
+	private Study4Member member; // 주문회원
 	
 	@OneToMany(mappedBy = "order")
-	private List<OrderItem> orderItems = new ArrayList<>();
+	private List<Study4OrderItem> orderItems = new ArrayList<>();
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date orderDate; // 주문시간
 	
 	@Enumerated(EnumType.STRING)
-	private OrderStatus status; // 주문상태
+	private Study4OrderStatus status; // 주문상태
 	
 	//== 연관관계 메서드 ==//
-	public void setMember(Member member) {
+	public void setMember(Study4Member member) {
 		
 		// 기존 관계 제거
 		if (this.member != null) {
@@ -55,7 +55,7 @@ public class Order {
 		member.getOrders().add(this);
 	}
 	
-	public void addOrderItem(OrderItem orderItem) {
+	public void addOrderItem(Study4OrderItem orderItem) {
 		orderItems.add(orderItem);
 		orderItem.setOrder(this);
 	}

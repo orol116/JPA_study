@@ -3,15 +3,14 @@ package com.jpa.study.study5.entity;
 import java.io.Serializable;
 import java.util.Objects;
 
-import javax.persistence.Entity;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
-@Entity
-public class MemberProductId implements Serializable {
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Study5MemberProductId implements Serializable {
 	
 	/* 복합키를 위한 별도의 식별자 클래스 규칙
 	 * 
@@ -23,7 +22,7 @@ public class MemberProductId implements Serializable {
 	 */
 
 	private static final long serialVersionUID = 1L;
-
+	
 	private String member;  // MemberProduct.member와 연결
 	private String product; // MemberProduct.product와 연결
 
@@ -32,6 +31,7 @@ public class MemberProductId implements Serializable {
 	public int hashCode() {
 		return Objects.hash(member, product);
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -40,7 +40,7 @@ public class MemberProductId implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		MemberProductId other = (MemberProductId) obj;
+		Study5MemberProductId other = (Study5MemberProductId) obj;
 		return Objects.equals(member, other.member) && Objects.equals(product, other.product);
 	}
 	

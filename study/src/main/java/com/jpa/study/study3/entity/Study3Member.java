@@ -28,10 +28,10 @@ public class Study3Member {
 	// 연관 관계 매핑
 	@ManyToOne
 	@JoinColumn(name = "TEAM_ID")
-	private Team team;
+	private Study3Team team;
 	
 	// 연관 관계 설정
-	public void updateTeam(Team team) {
+	public void updateTeam(Study3Team team) {
 		
 		/* 여태 고려하지 않은 문제가 있다.
 		 * 

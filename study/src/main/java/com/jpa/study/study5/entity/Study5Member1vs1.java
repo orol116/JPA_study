@@ -4,11 +4,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import lombok.Data;
+
+@Data
 @Entity
-public class Member1vs1 {
+public class Study5Member1vs1 {
 	
 	/* 1:1 관계이므로 객체 매핑에 @OneToOne을 사용했고
 	 * DB에는 LOCKER_ID 외래키에 유니크 제약 조건을 추가했다.
@@ -23,6 +25,6 @@ public class Member1vs1 {
 	
 	@OneToOne(mappedBy = "member")
 //	@JoinColumn(name = "LOCKER_ID")
-	private Locker1vs1 locker;
+	private Study5Locker1vs1 locker;
 	
 }

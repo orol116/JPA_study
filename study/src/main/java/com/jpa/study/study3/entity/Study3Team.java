@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Team {
+public class Study3Team {
 	
 	@Id
 	@Column(name = "TEAM_ID")

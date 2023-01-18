@@ -12,8 +12,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@IdClass(MemberProductId.class)
-public class MemberProduct {
+@IdClass(Study5MemberProductId.class)
+public class Study5MemberProduct {
 	
 	/* 회원상품 엔티티는 기본키가 
 	 * MEMBER_ID와 PRODUCT_ID로 이루어진 복합 기본키이다.
@@ -25,11 +25,11 @@ public class MemberProduct {
 	
 	@Id @ManyToOne
 	@JoinColumn(name = "MEMBER_ID")
-	private MemberNvsN member; // MemberProductId.member와 연결
+	private Study5MemberNvsN member; // MemberProductId.member와 연결
 	
 	@Id @ManyToOne
 	@JoinColumn(name = "PRODUCT_ID")
-	private ProductNvsN product; // MemberProductId.product와 연결
+	private Study5ProductNvsN product; // MemberProductId.product와 연결
 	
 	private int orderAmount;
 }

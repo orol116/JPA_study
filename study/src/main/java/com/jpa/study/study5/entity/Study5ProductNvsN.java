@@ -13,13 +13,13 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class ProductNvsN {
+public class Study5ProductNvsN {
 	
 	@Id @Column(name = "PRODUCT_ID")
 	private String id;
 	private String name;
 	
 	@ManyToMany(mappedBy = "products") // 역방향 추가
-	private List<MemberNvsN> members;
+	private List<Study5MemberNvsN> members;
 
 }

@@ -13,7 +13,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "ORDER_ITEM")
-public class OrderItem {
+public class Study2OrderItem {
 	
 	@Id
 	@GeneratedValue

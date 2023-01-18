@@ -8,7 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Member {
+public class Study5Member {
 	
 	/* 양방향은 외래키가 있는 쪽이 연관관계의 주인이다.
 	 * - 1:N, N:1 연관관계는 항상 N에 외래키가 있다.
@@ -26,9 +26,9 @@ public class Member {
 	
 	@ManyToOne
 	@JoinColumn(name = "TEAM_ID")
-	private Team team;
+	private Study5Team team;
 	
-	public void setTeam(Team team) {
+	public void setTeam(Study5Team team) {
 		this.team = team;
 		
 		// 무한루프에 빠지지 않도록 체크
@@ -53,7 +53,7 @@ public class Member {
 		this.username = username;
 	}
 
-	public Team getTeam() {
+	public Study5Team getTeam() {
 		return team;
 	}
 }
